@@ -1,12 +1,24 @@
 import React, { useState } from "react";
 import TableRow from "./TableRow";
 import { products } from "../../data";
+import GridCard from "./GridCard";
 
 const ProductTable = ({ onCheckBoxClicked, onCheckBoxUnchecked }) => {
   const [showFilterDropDown, setShowFilterDropDow] = useState(false);
+  const [showGrid, setShowGrid] = useState(false);
+
+  const onGridClick = () => {
+    setShowGrid(true);
+  };
+
+  const onTableClick = () => {
+    setShowGrid(false);
+  };
+
   const onFilterClick = () => {
     setShowFilterDropDow(!showFilterDropDown);
   };
+
   const filterDropDownList = (
     <div className="ease-in border-[1px] border-solid border-[#EFF1F4] absolute right-20 px-1 rounded-b-lg text-sm text-text cursor-pointer bg-white">
       <ul>
@@ -18,9 +30,64 @@ const ProductTable = ({ onCheckBoxClicked, onCheckBoxUnchecked }) => {
       </ul>
     </div>
   );
+
+  const grid = (
+    <div className="grid grid-cols-5 mt-4 gap-4">
+      {products.map((product) => (
+        <GridCard
+          {...product}
+          onCheckBoxClicked={onCheckBoxClicked}
+          onCheckBoxUnchecked={onCheckBoxUnchecked}
+        />
+      ))}
+    </div>
+  );
+
+  const table = (
+    <div className="mt-4 border-[1px] border-solid border-[#EFF1F4] rounded-lg">
+      <table className="w-full">
+        <thead className="text-sm text-text bg-[#F8F8F8] text-left">
+          <tr>
+            <th className="pl-4">
+              <input
+                type="checkbox"
+                value={"checkBox"}
+                className="w-4 h-4 text-primary bg-white border-gray-300 rounded focus:ring-primary   focus:ring-2 "
+              />
+            </th>
+            <th scope="col" className="font-thin pr-8 pl-2 py-2 ">
+              Name
+            </th>
+            <th scope="col" className="font-thin pr-6 pl-2 py-2">
+              Products Id
+            </th>
+            <th scope="col" className="font-thin pr-6 pl-2 py-2">
+              Category
+            </th>
+            <th scope="col" className="font-thin pr-6 pl-2 py-2">
+              Stock
+            </th>
+            <th scope="col" className="font-thin pr-6 pl-2 py-2">
+              Price
+            </th>
+            <th scope="col" className="font-thin pr-6 pl-2 py-2"></th>
+          </tr>
+        </thead>
+        <tbody className="text-sm text-left">
+          {products.map((product) => (
+            <TableRow
+              {...product}
+              onCheckBoxClicked={onCheckBoxClicked}
+              onCheckBoxUnchecked={onCheckBoxUnchecked}
+            />
+          ))}
+        </tbody>
+      </table>
+    </div>
+  );
   return (
     <div className="relative">
-      <div className="border-[1px] border-solid border-[#EFF1F4] flex items-center justify-between rounded-lg px-1 py-2">
+      <div className="border-[1px] border-solid border-[#EFF1F4] flex items-center justify-between rounded-lg px-1 py-2 ">
         <div className="flex items-center ">
           <div>
             <img src="/Search.svg" className="cursor-pointer p-2" />
@@ -29,7 +96,7 @@ const ProductTable = ({ onCheckBoxClicked, onCheckBoxUnchecked }) => {
             <input
               type="text"
               placeholder="Search Product by name, Product ID or any related keywords"
-              className="text-xs xl:text-sm w-96  py-2"
+              className="text-xs xl:text-sm w-[400px] py-2 border-none"
             />
           </div>
         </div>
@@ -43,58 +110,27 @@ const ProductTable = ({ onCheckBoxClicked, onCheckBoxUnchecked }) => {
               <div className="text-sm text-text">Filter</div>
             </div>
           </div>
-          <div>
+          <div onClick={onTableClick}>
             <img
               src="/element-2.svg"
-              className="p-1 rounded-lg border-[1px] border-solid border-[#EFF1F4] bg-[#EFF1F4] flex items-center justify-center"
+              className={`p-1 rounded-lg border-[1px] border-solid border-[#EFF1F4] flex items-center justify-center cursor-pointer ${
+                showGrid ? null : "bg-[#EFF1F4]"
+              }`}
             />
           </div>
-          <div className="p-1 rounded-lg border-[1px] border-solid border-[#EFF1F4] flex items-center justify-center">
+          <div
+            className={`p-1 rounded-lg border-[1px] border-solid border-[#EFF1F4] flex items-center justify-center cursor-pointer ${
+              showGrid ? "bg-[#EFF1F4]" : null
+            }`}
+            onClick={onGridClick}
+          >
             <img src="/element-3.svg" />
           </div>
         </div>
       </div>
       {showFilterDropDown ? filterDropDownList : null}
-      <div className="mt-4 border-[1px] border-solid border-[#EFF1F4] rounded-lg">
-        <table className="w-full">
-          <thead className="text-sm text-text bg-[#F8F8F8] text-left">
-            <tr>
-              <th className="pl-4">
-                <input
-                  type="checkbox"
-                  value={"checkBox"}
-                  className="w-4 h-4 text-primary bg-gray-100 border-gray-300 rounded focus:ring-primary   focus:ring-2 "
-                />
-              </th>
-              <th scope="col" className="font-thin pr-8 pl-2 py-2 ">
-                Name
-              </th>
-              <th scope="col" className="font-thin pr-6 pl-2 py-2">
-                Products Id
-              </th>
-              <th scope="col" className="font-thin pr-6 pl-2 py-2">
-                Category
-              </th>
-              <th scope="col" className="font-thin pr-6 pl-2 py-2">
-                Stock
-              </th>
-              <th scope="col" className="font-thin pr-6 pl-2 py-2">
-                Price
-              </th>
-              <th scope="col" className="font-thin pr-6 pl-2 py-2"></th>
-            </tr>
-          </thead>
-          <tbody className="text-sm text-left">
-            {products.map((product) => (
-              <TableRow
-                {...product}
-                onCheckBoxClicked={onCheckBoxClicked}
-                onCheckBoxUnchecked={onCheckBoxUnchecked}
-              />
-            ))}
-          </tbody>
-        </table>
-      </div>
+
+      {showGrid ? grid : table}
     </div>
   );
 };
