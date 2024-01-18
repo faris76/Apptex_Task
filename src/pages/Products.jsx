@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import ProductTable from "../components/ProductTable";
+import MyModal from "../components/MyModel";
 
 const Products = () => {
   const [checkBoxClicked, setCheckBoxClicked] = useState(false);
+  const [showModal, setShowModal] = useState(false);
 
   const onCheckBoxClicked = () => {
     setCheckBoxClicked(true);
@@ -28,7 +30,12 @@ const Products = () => {
       <div className="border-[1px] border-solid border-[#EFF1F4] px-2 py-2 rounded-lg cursor-pointer">
         delete products
       </div>
-      <div className="border-[1px] border-solid border-[#EFF1F4] px-2 py-2 rounded-lg cursor-pointer">
+      <div
+        className="border-[1px] border-solid border-[#EFF1F4] px-2 py-2 rounded-lg cursor-pointer"
+        onClick={() => {
+          setShowModal(true);
+        }}
+      >
         add stock
       </div>
     </div>
@@ -46,7 +53,9 @@ const Products = () => {
                 className="border-dotted border-[1px] border-white rounded-full"
               />
             </div>
-            <div className="text-xs">New Product</div>
+            <div className="text-xs hover:duration-700 hover:ease-in-out">
+              New Product
+            </div>
           </div>
         </div>
         <div>
@@ -57,6 +66,7 @@ const Products = () => {
         </div>
       </div>
       {checkBoxClicked ? popUp : null}
+      {showModal ? <MyModal setShowModal={setShowModal} /> : null}
     </div>
   );
 };
