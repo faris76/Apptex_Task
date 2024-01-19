@@ -22,6 +22,10 @@ const App = () => {
           path: "/products/add",
           element: <AddProduct />,
         },
+        {
+          path: "/products/detail",
+          element: <ProductDetail />,
+        },
       ],
     },
   ]);
