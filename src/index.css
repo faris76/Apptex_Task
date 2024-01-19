@@ -16,6 +16,10 @@ body {
   border-bottom: 1px solid rgba(0, 0, 0, 0.05);
 }
 
+.bottom-gray-2 {
+  border-bottom: 2px solid rgba(0, 0, 0, 0.05);
+}
+
 .card-shadow {
   box-shadow: 4px 4px 25px 0px rgba(0, 0, 0, 0.1);
 }

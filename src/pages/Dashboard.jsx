@@ -16,15 +16,17 @@ const Dashboard = () => {
             <img src={NotificationIcon} />
           </div>
         </div>
-        <div className="grid grid-cols-2 h-full gap-4 mt-8">
-          <div className="bg-secondary rounded-lg">
-            <BarGraph />
+        <div className="flex h-full gap-4 mt-8">
+          <div className="flex flex-col flex-[3] gap-4">
+            <div className="bg-secondary rounded-lg">
+              <BarGraph />
+            </div>
+            <div className="bg-secondary rounded-lg">
+              <LineGraph />
+            </div>
           </div>
-          <div className="row-span-2 bg-secondary rounded-lg">
+          <div className="row-span-2 bg-secondary rounded-lg flex-[2]">
             <ProductDetailsList />
-          </div>
-          <div className="bg-secondary rounded-lg">
-            <LineGraph />
           </div>
         </div>
       </div>

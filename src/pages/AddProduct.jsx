@@ -1,12 +1,10 @@
-import { useForm } from "react-hook-form";
 import PeerInput from "../components/PeerInput";
 import MediaInput from "../components/MediaInput";
 import { Link } from "react-router-dom";
 
 const AddProduct = () => {
-  const form = useForm();
   return (
-    <div className="pl-2 pr-20">
+    <div className="pl-4 pr-20">
       <div className="flex justify-between items-center mt-4">
         <div className="flex items-center">
           <Link to={"/products"}>
@@ -27,8 +25,8 @@ const AddProduct = () => {
         </div>
       </div>
       <form>
-        <div className="grid grid-cols-2 gap-4 mt-4 ">
-          <div className="flex flex-col gap-4">
+        <div className="flex gap-4 mt-4 ">
+          <div className="flex flex-col gap-4 col-span-2 flex-2">
             <div className="bg-[#F8F8F8] rounded-lg">
               <div className="mx-4 py-4">
                 <div>
@@ -85,7 +83,7 @@ const AddProduct = () => {
               </div>
             </div>
 
-            <div className="bg-[#F8F8F8] rounded-lg">
+            <div className="bg-[#F8F8F8] rounded-lg flex-1">
               <div className="mx-4 py-4">
                 <div className="text-xs mb-4">Options</div>
                 <div className="flex flex-col gap-4">

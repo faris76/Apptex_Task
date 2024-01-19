@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const TableRow = ({
   img,
@@ -26,10 +27,10 @@ const TableRow = ({
         />
       </td>
       <th scope="row" className="pr-8 pl-2 py-3">
-        <div className="flex items-center gap-2">
+        <Link to={"/products/detail"} className="flex items-center gap-2">
           <img src={img} />
           <p className="font-medium text-xs">{name}</p>
-        </div>
+        </Link>
       </th>
       <td className="pr-8 pl-2 py-3">
         <p className="text-xs rounded-full flex items-center text-[#091E42] ">

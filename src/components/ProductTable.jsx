@@ -20,7 +20,7 @@ const ProductTable = ({ onCheckBoxClicked, onCheckBoxUnchecked }) => {
   };
 
   const filterDropDownList = (
-    <div className="ease-in border-[1px] border-solid border-[#EFF1F4] absolute right-20 px-1 rounded-b-lg text-sm text-text cursor-pointer bg-white">
+    <div className="z-10 ease-in border-[1px] border-solid border-[#EFF1F4] absolute right-20 px-1 rounded-b-lg text-sm text-text cursor-pointer bg-white">
       <ul>
         <li className="bottom-gray p-2 hover:bg-secondary">Name</li>
         <li className="bottom-gray p-2 hover:bg-secondary">Product Id</li>
@@ -35,6 +35,7 @@ const ProductTable = ({ onCheckBoxClicked, onCheckBoxUnchecked }) => {
     <div className="grid grid-cols-5 mt-4 gap-4">
       {products.map((product) => (
         <GridCard
+          key={product.id}
           {...product}
           onCheckBoxClicked={onCheckBoxClicked}
           onCheckBoxUnchecked={onCheckBoxUnchecked}
@@ -76,6 +77,7 @@ const ProductTable = ({ onCheckBoxClicked, onCheckBoxUnchecked }) => {
         <tbody className="text-sm text-left">
           {products.map((product) => (
             <TableRow
+              key={product.id}
               {...product}
               onCheckBoxClicked={onCheckBoxClicked}
               onCheckBoxUnchecked={onCheckBoxUnchecked}

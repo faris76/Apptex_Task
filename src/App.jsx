@@ -4,6 +4,7 @@ import Layout from "./components/Layout";
 import Dashboard from "./pages/Dashboard";
 import Products from "./pages/Products";
 import AddProduct from "./pages/AddProduct";
+import ProductDetail from "./pages/ProductDetail";
 const App = () => {
   const router = createBrowserRouter([
     {
